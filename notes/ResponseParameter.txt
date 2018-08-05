@@ -1,0 +1,13 @@
+Ways to send data to client(Browser)
+	Session
+	Cookie
+	Request (Query) Parameter
+	
+HTML 5 has enahncement for Cookie
+	1. Cookie limit extended to 5MB
+	2. Local storage (Cookie + additional 5 mb size) and session storage
+	
+MVC (Model View Controller)
+
+Struts
+	
