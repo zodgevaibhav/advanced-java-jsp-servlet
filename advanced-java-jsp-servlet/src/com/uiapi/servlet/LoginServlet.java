@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.uiapi.busn.users.LoginAuthentication;
 
@@ -33,7 +34,12 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
 		if(LoginAuthentication.isUserValid(request.getParameter("txtLoginName"), request.getParameter("txtPassword"))) 
-			pw.println("<html><body><h1 style=\"color:green\">Your login is successful</h1></body></html>");
+		{
+		//	pw.println("<html><body><h1 style=\"color:green\">Your login is successful</h1></body></html>");
+			HttpSession session = request.getSession();
+			session.setAttribute("userName", request.getParameter("txtLoginName").toUpperCase());
+			response.sendRedirect("landingPage.jsp");
+		}
 		else
 			pw.println("<html><body><h1 style=\"color:red\" >Your login is un successful</h1></body></html>");
 		pw.close();
